@@ -7,6 +7,7 @@ int exp_wall;
 int dsize;
 int sx32 = 16;
 int sy32 = 24;
+int end_normal = 0;
 
 FILE *mfp,*sfp;
 char outname[1024], ctgname[100], subsname[100];
@@ -701,6 +702,7 @@ void process_config(char *fname)
 
 
 while(1){
+  int dummy;
   fgets(tmp,99,fp);
   if(feof(fp))break;
   i=0;while(i<99 && tmp[i]>=32)i++;
@@ -745,7 +747,15 @@ fprintf(stderr,"[%s]\n",tmp);
   if (getval(tmp,"width",&xx0)) continue;
   if (getval(tmp,"sx",&sx32)) continue;
   if (getval(tmp,"sy",&sy32)) continue;
-  if (tmp[0]=='#' || tmp[0]<32){
+  if (getval(tmp,"end_normal",&dummy))
+  {
+      fprintf(sfp,"-1, -1 };\n");
+      end_normal = 1;
+      continue;
+  }
+
+  if (tmp[0]=='#' || tmp[0]<32)
+  {
     if(tmp[0]=='#')fprintf(sfp,"//%s\n",tmp);
     if(tmp[0]<32) fprintf(sfp,"\n");
     continue;
@@ -762,9 +772,12 @@ fprintf(stderr,"[%s]\n",tmp);
     {
         nuke=strstr(st,"/*");if(nuke)*nuke=0;
         if(exp_wall)
-        fprintf(sfp,"TILE_%s, (TILE_TOTAL+%d),\n",st,bx+by*xx0-16);
+            fprintf(sfp,"TILE_%s, (TILE_TOTAL+%d),\n",st,bx+by*xx0-16);
 	else
-        fprintf(sfp,"TILE_%s, (TILE_TOTAL+%d),\n",st,bx+by*xx0);
+        if(end_normal)
+            fprintf(sfp,"#define TILE_%s (TILE_TOTAL+%d)\n",st,bx+by*xx0);
+        else
+            fprintf(sfp,"TILE_%s, (TILE_TOTAL+%d),\n",st,bx+by*xx0);
     }
 
     if(!exp_wall){bx++;if(bx==xx0){bx=0;by++;}}
@@ -818,7 +831,7 @@ fprintf(sfp,"const int tile_qv_pair_table[] ={\n");
   process_config(fn);
 
 
-fprintf(sfp,"-1, -1 };\n");
+if(end_normal == 0)fprintf(sfp,"-1, -1 };\n");
 
 fprintf(sfp,"\n#define TILE_TOTAL_EX %d\n",bx+by*xx0);
 fprintf(sfp,"#define TILE_PER_ROW_EX %d\n",xx0);
