@@ -746,7 +746,8 @@ fprintf(stderr,"[%s]\n",tmp);
   if (getval(tmp,"sx",&sx32)) continue;
   if (getval(tmp,"sy",&sy32)) continue;
   if (tmp[0]=='#' || tmp[0]<32){
-    fprintf(sfp,"\n//%s\n",tmp);
+    if(tmp[0]=='#')fprintf(sfp,"//%s\n",tmp);
+    if(tmp[0]<32) fprintf(sfp,"\n");
     continue;
   } 
 

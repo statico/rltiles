@@ -385,7 +385,7 @@ fprintf(mfp,"<MAP NAME=\"nhmap\">\n");
 
   printf("%s\ncpath=%s\n",argv[0],cpath);
   if(argc==1)
-    sprintf(fn,"%sdc-all.txt",cpath);
+    sprintf(fn,"%sdc-2d.cfg",cpath);
   else strcpy(fn,argv[1]);
   process_config(fn);
 
