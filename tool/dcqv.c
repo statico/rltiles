@@ -157,21 +157,21 @@ int ox=0;
 int oy=0;
 
 if(corpse==1 ){
-	xmin=ymin=31;
-	xmax=ymax=0;
-	for(xx=0;xx<32;xx++){
-	for(yy=0;yy<32;yy++){
-		ad=ADR32(xx,yy);
-		for(c=0;c<3;c++)dd[c]=tbuf[c][ad];
-		if( (dd[0]==0x47)&&(dd[1]==0x6c)&& (dd[2]==0x6c))continue;
-		if( (dd[0]==0)&&(dd[1]==0)&& (dd[2]==0))continue;
-		if(xx<xmin)xmin=xx;
-		if(xx>xmax)xmax=xx;
-		if(yy<ymin)ymin=yy;
-		if(yy>ymax)ymax=yy;
-	}}/*xy**/
-	ox=(xmax+xmin)/2-16;
-	oy=(ymax+ymin)/2-16;
+    xmin=ymin=31;
+    xmax=ymax=0;
+    for(xx=0;xx<32;xx++){
+    for(yy=0;yy<32;yy++){
+	ad=ADR32(xx,yy);
+  	    for(c=0;c<3;c++)dd[c]=tbuf[c][ad];
+	    if( (dd[0]==0x47)&&(dd[1]==0x6c)&& (dd[2]==0x6c))continue;
+	    if( (dd[0]==0)&&(dd[1]==0)&& (dd[2]==0))continue;
+	    if(xx<xmin)xmin=xx;
+	    if(xx>xmax)xmax=xx;
+	    if(yy<ymin)ymin=yy;
+	    if(yy>ymax)ymax=yy;
+    }}/*xy**/
+    ox=(xmax+xmin)/2-16;
+    oy=(ymax+ymin)/2-16;
 }
 
 if(slant==1){
@@ -225,39 +225,42 @@ return;
 
 for(xx=0;xx<32;xx++){
 for(yy=0;yy<32;yy++){
-dflag[xx][yy]=0;
-ad=ADR32(xx,yy);
+    dflag[xx][yy]=0;
+    ad=ADR32(xx,yy);
 
-if(corpse==1){
-    int x1=xx+ox;
-    int y1=(yy+oy)*2-16;
-    int cy=18;
-    if(xx<4 || xx>=28)cy+=2;else
-    if(xx<12 || xx>=20) cy+=1;
+    if(corpse==1){
+        int x1=xx+ox;
+        int y1=(yy+oy)*2-16;
+        int cy=18;
+        if(xx<4 || xx>=28)cy+=2;else
+        if(xx<12 || xx>=20) cy+=1;
 
-    if(yy>=cy-1 && yy<=cy+0)continue;
-    x1 += (y1-16)/4;
-    if(y1>=cy){y1-=2;x1-=3;}else {y1 +=2;x1+=3;}
-    if(x1<0 || x1>=32 || y1<0 || y1>=32)continue;
-    ad=ADR32(x1,y1);
-}
+        if(yy>=cy-1 && yy<=cy+0)continue;
+        x1 += (y1-16)/4;
+        if(y1>=cy){y1-=2;x1-=3;}else {y1 +=2;x1+=3;}
+        if(x1<0 || x1>=32 || y1<0 || y1>=32)continue;
+        ad=ADR32(x1,y1);
+    }
 
-/*** normal***/
-for(c=0;c<3;c++){dd[c]=tbuf[c][ad];}
-if(mesh==2){
-if( (dd[0]!=0x47)||(dd[1]!=0x6c)|| (dd[2]!=0x6c)){
-if( ((xx+yy)&1) ==0)dd[0]=dd[1]=dd[2]=0;
-}
-}
-if(mesh==1){
-if( (((xx/2)+(yy/2))&1) ==1)dd[0]=dd[1]=dd[2]=0;
-}
+    /*** normal***/
+    for(c=0;c<3;c++){dd[c]=tbuf[c][ad];}
+    if(mesh==2)
+    {
+        if( (dd[0]!=0x47)||(dd[1]!=0x6c)|| (dd[2]!=0x6c))
+        {
+             if( ((xx+yy)&1) ==0)dd[0]=dd[1]=dd[2]=0;
+        }
+    }
+    else if(mesh==1)
+    {
+        if( (((xx/2)+(yy/2))&1) ==1)dd[0]=dd[1]=dd[2]=0;
+    }
 
-if( (dd[0]==0x47)&&(dd[1]==0x6c)&& (dd[2]==0x6c))continue;
-if( (corpse==1) &&(dd[0]==0)&&(dd[1]==0)&& (dd[2]==0))continue;
+    if( (dd[0]==0x47)&&(dd[1]==0x6c)&& (dd[2]==0x6c))continue;
+    if( (corpse==1) &&(dd[0]==0)&&(dd[1]==0)&& (dd[2]==0))continue;
 
-for(c=0;c<3;c++) {dbuf[c][ADR64(sx32+xx,sy32+yy)]=dd[c];}
- dflag[xx][yy]=1;
+    for(c=0;c<3;c++) {dbuf[c][ADR64(sx32+xx,sy32+yy)]=dd[c];}
+     dflag[xx][yy]=1;
 }}
 
 
@@ -300,11 +303,28 @@ dbuf[2][ADR64(xx,yy)]=0;
 
 void cp_monst_64(){
 int xx,yy,c,dd[3],ad;
+int dflag[64][64];
+
 for(xx=0;xx<64;xx++){
 for(yy=0;yy<64;yy++){
+    dflag[xx][yy]=0;
     ad=ADR64(xx,yy);
+
+    if(corpse==1)
+    {
+        int y1=2*(yy-26);
+        int x1=32+(xx-32)*5/4+(y1-32)*3/4;
+
+        y1 -= (xx-32)/3;
+        if(x1<0 || x1>=64 || y1<0 || y1>=64)continue;
+        ad=ADR64(x1,y1);
+    }
+
     /*** normal***/
     for(c=0;c<3;c++){dd[c]=tbuf[c][ad];}
+
+    if( (corpse==1) &&(dd[0]==0)&&(dd[1]==0)&& (dd[2]==0))continue;
+
     if(mesh==2)
     {
         if( (dd[0]!=0x47)||(dd[1]!=0x6c)|| (dd[2]!=0x6c))
@@ -316,8 +336,56 @@ for(yy=0;yy<64;yy++){
 
     if( (dd[0]==0x47)&&(dd[1]==0x6c)&& (dd[2]==0x6c))continue;
 
+    dflag[xx][yy]=1;
+
     for(c=0;c<3;c++) {dbuf[c][ADR64(xx,yy)]=dd[c];}
 }}
+
+if (corpse == 1)
+{
+    for(yy=0;yy<64;yy++)
+    {
+        int thick=0;
+        for(xx=0;xx<64;xx++)
+        {
+            if(dflag[xx][yy]==1)
+            {
+                thick++;
+                if (thick>15) thick=15;
+                continue;
+            }
+            if (thick>0)
+            {
+                for(c=0;c<3;c++) {dbuf[c][ADR64(xx,yy)]=0;}
+                thick -= 3;
+                if (thick<0) thick=0;
+            }
+        }
+    }
+
+    for(xx=0;xx<64;xx++)
+    {
+        int thick=0;
+        for(yy=0;yy<64;yy++)
+        {
+            if(dflag[xx][yy]==1)
+            {
+                thick++;
+                if (thick>15) thick=15;
+                continue;
+            }
+            if (thick>0)
+            {
+                for(c=0;c<3;c++) {dbuf[c][ADR64(xx,yy)]=0;}
+                thick -= 5;
+                if (thick<0) thick=0;
+            }
+        }
+    }
+
+}
+
+
 }
 
 
@@ -382,7 +450,7 @@ unsigned char dd[3];
 
 	ymax= 8+x/2;
 	if(ymax> 8+(31-x)/2) ymax=8+(31-x)/2;
-	if(y<ymax) continue;
+	if(y<=ymax) continue;
  
         for(c=0;c<3;c++){dd[c]=wallbuf[wall_ix][c][ad];}
         if( (dd[0]==0x47)&&(dd[1]==0x6c)&& (dd[2]==0x6c))continue;
@@ -666,10 +734,10 @@ fprintf(stderr,"[%s]\n",tmp);
   }
 
   if (getval(tmp,"slant",&slant)) continue;
+  if (getval(tmp,"corpse",&corpse)) continue;
   if (getval(tmp,"dsize",&dsize)) continue;
   if (getval(tmp,"mesh",&mesh)) continue;
   if (getval(tmp,"rim",&rim)) continue;
-  if (getval(tmp,"corpose",&corpse)) continue;
   if (getname(tmp,"ctg",ctgname)) continue;
   if (getname(tmp,"subst",subsname)) continue;
   if (getname(tmp,"sdir",sdir)) continue;
@@ -678,8 +746,7 @@ fprintf(stderr,"[%s]\n",tmp);
   if (getval(tmp,"sx",&sx32)) continue;
   if (getval(tmp,"sy",&sy32)) continue;
   if (tmp[0]=='#' || tmp[0]<32){
-    if(tmp[0]<32)  {}
-    else fprintf(sfp,"\n//%s\n",tmp);
+    fprintf(sfp,"\n//%s\n",tmp);
     continue;
   } 
 
