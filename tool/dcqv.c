@@ -775,7 +775,7 @@ fprintf(stderr,"[%s]\n",tmp);
             fprintf(sfp,"TILE_%s, (TILE_TOTAL+%d),\n",st,bx+by*xx0-16);
 	else
         if(end_normal)
-            fprintf(sfp,"#define TILE_%s (TILE_TOTAL+%d)\n",st,bx+by*xx0);
+            fprintf(sfp,"#define TILE_%s %d\n",st,bx+by*xx0);
         else
             fprintf(sfp,"TILE_%s, (TILE_TOTAL+%d),\n",st,bx+by*xx0);
     }
