@@ -318,9 +318,9 @@ i=0;while(i<99 && tmp[i]>32)i++;
 tmp[i]=0; strcpy(st, &tmp[i+1]);
  load_monst(tmp);
 
-fprintf(mfp,"<area shape=\"rect\" coords=\"%d,%d,%d,%d\" href=%s>\n",
+fprintf(mfp,"<area shape=\"rect\" coords=\"%d,%d,%d,%d\" alt=\"%s\" href=\"%s\">\n",
 bx*WID,by*WID,bx*WID+WID-1,by*WID+WID-1,
-realname);
+st,realname);
 
 if(!strstr(st,"IGNORE_COMMENT")){
 nuke=strstr(st,"/*");if(nuke)*nuke=0;
@@ -385,7 +385,7 @@ fprintf(mfp,"<MAP NAME=\"nhmap\">\n");
 
   printf("%s\ncpath=%s\n",argv[0],cpath);
   if(argc==1)
-    sprintf(fn,"%sdc-2d.cfg",cpath);
+    sprintf(fn,"%sdc-2d.txt",cpath);
   else strcpy(fn,argv[1]);
   process_config(fn);
 
