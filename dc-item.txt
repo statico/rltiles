@@ -266,6 +266,7 @@ beef_jerky FOOD_BEEF_JERKY
 cheese FOOD_CHEESE
 sausage FOOD_SAUSAGE
 corpse FOOD_CHUNK
+corpse_rotten FOOD_CHUNK_ROTTEN
 bone FOOD_BONE
 #################OBJ_UNKNOWN_I
 ##################OBJ_SCROLLS
