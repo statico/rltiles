@@ -221,7 +221,7 @@ hashn[h]=n;
 }
 
 int cidx(r,g,b) int r,g,b;{
-int r2,r2min,i,j,k,h,n,ix,dr,dg,db;
+int r2,r2min,i,h,n,ix,dr,dg,db;
 
   ix = -1;
   if(hashflag){
@@ -305,7 +305,7 @@ fclose(fp);}
 void bmwrite24(char *fn, int x, int y, unsigned char *buf3[3])
 {
 FILE *fp;
-int i,j,k,xx,yy;
+int i,xx,yy;
 
 if(fn[0]==0) fp=stdout; else fp=fopen(fn,"wb");
 
@@ -327,23 +327,23 @@ fputc(buf3[0][i],fp);
 fclose(fp);}
 
 
-void bmwrite_dither(char *fn, int x, int y, unsigned char *buf3[3])
+void bmwrite_dither(char *fn, int x, int y, unsigned char *buf3[3],
+                    unsigned char *flag)
 {
-FILE *fp;
-int i,j,k,xx,yy;
-int *err_c[3], *err_n[3];
-unsigned char *buf;
-int dx,idat[3],udat[3],putdat[3],err[3];
+    FILE *fp;
+    int i,j,k,xx,yy;
+    int *err_c[3], *err_n[3];
+    unsigned char *buf;
+    int dx,idat[3],udat[3],putdat[3],err[3];
 
-fprintf(stderr,"Saving %s x=%d y=%d\n",fn,x,y);
+    fprintf(stderr,"Saving %s x=%d y=%d\n",fn,x,y);
 
-for(i=0;i<3;i++){
-err_c[i]=malloc(sizeof(int)*(x+2));
-err_n[i]=malloc(sizeof(int)*(x+2));
-for(j=0;j<x+2;j++)err_c[i][j]=err_n[i][j]=0;
-}
-buf=malloc(x*y);
-
+    for(i=0;i<3;i++){
+        err_c[i]=malloc(sizeof(int)*(x+2));
+        err_n[i]=malloc(sizeof(int)*(x+2));
+        for(j=0;j<x+2;j++)err_c[i][j]=err_n[i][j]=0;
+    }
+    buf=malloc(x*y);
 
 for(yy=0;yy<y;yy++){
 //fprintf(stderr,"Y=%d x=%d\n",yy,x);
@@ -355,6 +355,7 @@ for(yy=0;yy<y;yy++){
 if((yy&1)==0){//even
 
 for(xx=0;xx<x;xx++){
+int do_ep = 1;
 idat[0] = buf3[0][ xx+yy*x];
 idat[1] = buf3[1][ xx+yy*x];
 idat[2] = buf3[2][ xx+yy*x];
@@ -363,6 +364,12 @@ udat[i]=idat[i];if(udat[i]<0)udat[i]=0;
 if(udat[i]>255)udat[i]=255;}
 
 if(buf3[0][xx+yy*x]==0x47 && buf3[1][xx+yy*x]==0x6c && buf3[2][xx+yy*x]==0x6c)
+  do_ep=0;
+if (flag!=NULL)
+{
+    if (flag[xx+yy*x]==0) do_ep=0;
+}
+if (do_ep == 0)
 k=cidx( buf3[0][xx+yy*x],buf3[1][xx+yy*x],buf3[2][xx+yy*x]);
 else
 k=cidx( udat[0],udat[1],udat[2]);
@@ -384,13 +391,21 @@ for(i=0;i<3;i++) {
 }/**x**/
 }else{
 for(xx=x-1;xx>=0;xx--){
+int do_ep=1;
 idat[0] = buf3[0][ xx+yy*x];
 idat[1] = buf3[1][ xx+yy*x];
 idat[2] = buf3[2][ xx+yy*x];
 for(i=0;i<3;i++) {idat[i] += err_c[i][xx+1];
 udat[i]=idat[i];if(udat[i]<0)udat[i]=0;
 if(udat[i]>255)udat[i]=255;}
+
 if(buf3[0][xx+yy*x]==0x47 && buf3[1][xx+yy*x]==0x6c && buf3[2][xx+yy*x]==0x6c)
+  do_ep=0;
+if (flag!=NULL)
+{
+    if (flag[xx+yy*x]==0) do_ep=0;
+}
+if (do_ep == 0)
 k=cidx( buf3[0][xx+yy*x],buf3[1][xx+yy*x],buf3[2][xx+yy*x]);
 else
 k=cidx( udat[0],udat[1],udat[2]);
@@ -438,6 +453,7 @@ free(buf);
 
 void myfget(ss,fp) char *ss;FILE *fp;{
 #define STRMAX 200
+/****
 int ix=1; 
 while(1){ ss[0]=getc(fp);
  if( ((ss[0]!=32)&&(ss[0]!='#'))||(feof(fp)))break;
@@ -447,6 +463,16 @@ while(1){
   ss[ix]=getc(fp);ix++;
   if( (ss[ix-1]<33)||(ix==STRMAX)||(feof(fp)) )break;}
 ss[ix-1]=0;printf("%s\n",ss);
+****/
+int l;
+while(1){
+        fgets(ss,STRMAX,fp);
+        if(feof(fp)){fprintf(stderr,"FILE EOF\n");return;}
+        if(ss[0]=='#')continue;
+        if(ss[0]<32)continue;
+        break;
+}
+    l=strlen(ss);ss[l-1]=0;
 }
 
 void oldcolors()

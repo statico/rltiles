@@ -6,7 +6,8 @@ extern int bmread(char *fn, int *x, int *y, unsigned char *buf3[3]);
 extern void fixalloc(char *buf[3], int size);
 extern void bmwrite(char *fn, int x, int y, unsigned char *buf3[3]);
 extern void bmwrite24(char *fn, int x, int y, unsigned char *buf3[3]);
-extern void bmwrite_dither(char *fn, int x, int y, unsigned char *buf3[3]);
+extern void bmwrite_dither(char *fn, int x, int y, unsigned char *buf3[3], 
+                           unsigned char *flag);
 extern void stdpal();
 extern void myfget(char *ss, FILE *fp);
 extern int getval(char *buf, char *tag, int *val);
