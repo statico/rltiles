@@ -39,8 +39,11 @@ void convert_hue(unsigned char *r, unsigned char *g, unsigned char *b,
     bb = ( (max+modif) * b0 )/ max0;
 
     if(rr>255) rr=255;
+    else if(rr<0) rr=0;
     if(gg>255) gg=255;
+    else if(gg<0) gg=0;
     if(bb>255) bb=255;
+    else if(bb<0) bb=0;
 
     *r=rr; *g=gg; *b=bb;
 }
