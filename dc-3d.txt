@@ -76,12 +76,12 @@ dngn_altar UNSEEN_ALTAR
 %slant 0
 %rim 1
 %sdir dc-mon64
-%include dc-mon64.cfg
+%include dc-mon64.txt
 %dsize 0
 %rim 0
 
 ##### Corpses
-%include dc-co64.cfg
+%include dc-co64.txt
 %corpse 0
 %back blank
 
@@ -122,4 +122,4 @@ dc-misc64/sink_mask MASK_LAVA
 
 %end_normal 1
 
-%include dc-pandemo64.cfg
+%include dc-pandemo64.txt

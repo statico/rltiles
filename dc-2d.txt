@@ -2,21 +2,21 @@
 %back none
 
 ## Dungeon features
-%include dc-dngn.cfg
+%include dc-dngn.txt
 
 ## Set black rim
 %rim 1
 ## Items
-%include dc-item.cfg
+%include dc-item.txt
 ## Monsters
-%include dc-mon.cfg
+%include dc-mon.txt
 ## Clear black rim
 %rim 0
 
 ## Corpse
 %back dc/blood
 %corpse 1
-%include dc-co.cfg
+%include dc-co.txt
 %back none
 %corpse 0
 
@@ -24,7 +24,7 @@
 ####include dc-jobs.txt
 
 #### Effects, etc.
-%include dc-misc.cfg
+%include dc-misc.txt
 
 %back nh-dngn/dark_part_of_a_room
 dc-misc/unseen_monster MCACHE_START
