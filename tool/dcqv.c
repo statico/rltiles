@@ -451,7 +451,7 @@ unsigned char dd[3];
 
 	ymax= 8+x/2;
 	if(ymax> 8+(31-x)/2) ymax=8+(31-x)/2;
-	if(y<=ymax) continue;
+	if(y<ymax) continue;
  
         for(c=0;c<3;c++){dd[c]=wallbuf[wall_ix][c][ad];}
         if( (dd[0]==0x47)&&(dd[1]==0x6c)&& (dd[2]==0x6c))continue;
@@ -826,7 +826,7 @@ fprintf(sfp,"const int tile_qv_pair_table[] ={\n");
 
   printf("%s\ncpath=%s\n",argv[0],cpath);
   if(argc==1)
-    sprintf(fn,"%sdc-qv.txt",cpath);
+    sprintf(fn,"%sdc-3d.txt",cpath);
   else strcpy(fn,argv[1]);
   process_config(fn);
 
