@@ -443,15 +443,16 @@ dispater DISPATER
 olgreb OLGREB
 
 ## axes
-axe BATTLEAXE
 axe_small AXE_SMALL
 hand_axe HAND_AXE
 war_axe WAR_AXE
 great_axe BROAD_AXE
+axe BATTLEAXE
 axe_executioner EXECUTIONERS_AXE
 axe_double AXE_DOUBLE
 axe_blood AXE_BLOOD
 axe_short AXE_SHORT
+axe_trog AXE_TROG
 arga ARGA
 
 ## launchers
