@@ -30,6 +30,10 @@ void convert_hue(unsigned char *r, unsigned char *g, unsigned char *b,
     if(max0<g0) max0=g0;
     if(max0<b0) max0=b0;
 
+    if (max <=32) modif /= 4;
+    else
+    if (max <=64) modif /= 2;
+
     rr = ( (max+modif) * r0 )/ max0;
     gg = ( (max+modif) * g0 )/ max0;
     bb = ( (max+modif) * b0 )/ max0;
