@@ -98,7 +98,7 @@ trident WPN_TRIDENT
 demon_trident WPN_DEMON_TRIDENT
 
 ######OBJ_MISSILES
-item/gem/rock MI_STONE
+item/gem/stone MI_STONE
 ya MI_ARROW
 effect/arrow0 MI_ARROW0
 effect/arrow1 MI_ARROW1
