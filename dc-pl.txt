@@ -329,6 +329,7 @@ long_sword_slant LONG_SWORD_SLANT
 great_sword GREAT_SWORD
 great_sword_slant GREAT_SWORD_SLANT
 katana KATANA
+katana_slant KATANA_SLANT
 scimitar2 SCIMITAR
 scimitar FALCHION
 sword2 SWORD2
@@ -400,12 +401,14 @@ hook HOOK
 halberd HALBERD
 pick_axe PICK_AXE
 trident TRIDENT
+trident_demon DEMON_TRIDENT
 trident_elec TRIDENT_ELEC
 trident2 TRIDENT2
 trident3 TRIDENT3
 lance LANCE
 lance2 LANCE2
 scythe SCYTHE
+scythe_slant SCYTHE_SLANT
 pike PIKE
 quarterstaff1 QUARTERSTAFF1
 quarterstaff2 QUARTERSTAFF2
