@@ -120,6 +120,7 @@ effect/bolt6 MI_BOLT6
 effect/bolt7 MI_BOLT7
 
 dart MI_DART
+dart-p MI_DART_P
 effect/dart0 MI_DART0
 effect/dart1 MI_DART1
 effect/dart2 MI_DART2
@@ -128,9 +129,9 @@ effect/dart4 MI_DART4
 effect/dart5 MI_DART5
 effect/dart6 MI_DART6
 effect/dart7 MI_DART7
-dart-p MI_DART_P
 
 needle MI_NEEDLE
+needle-p MI_NEEDLE_P
 effect/needle0 MI_NEEDLE0
 effect/needle1 MI_NEEDLE1
 effect/needle2 MI_NEEDLE2
@@ -139,7 +140,6 @@ effect/needle4 MI_NEEDLE4
 effect/needle5 MI_NEEDLE5
 effect/needle6 MI_NEEDLE6
 effect/needle7 MI_NEEDLE7
-needle-p MI_NEEDLE_P
 
 item/gem/rock MI_LARGE_ROCK
 ######OBJ_ARMOUR
@@ -226,6 +226,7 @@ gauntlet2 ARM_GLOVES_3
 boots_brown1 ARM_BOOTS
 jackboots ARM_BOOTS_1
 boots_stripe1 ARM_BOOTS_2
+boots_green2 ARM_BOOTS_3
 
 ###########OBJ_WANDS
 %sdir item/wand

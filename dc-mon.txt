@@ -1,12 +1,14 @@
 %subst nh-mon0/m/large_mimic
 %sdir dc-mon0/0demon
+%rim 0
 nh-mon0/0demon/shade MONS_SHADOW /*' '*/
+%rim 1
 nh-mon1/e/earth_elemental MONS_EARTH_ELEMENTAL /*'#'*/
 nh-mon1/e/fire_elemental MONS_FIRE_ELEMENTAL /*'#'*/
 %rim 0
 nh-mon0/v/fog_cloud MONS_VAPOUR /*'#'*/
 %rim 1
-item/gem/gold_piece MONS_GOLD_MIMIC /*'$'*/
+#item/gem/gold_piece MONS_GOLD_MIMIC /*'$'*/
 death_cob MONS_DEATH_COB /*'%'*/
 nh-mon0/0demon/asmodeus MONS_ASMODEUS /*'&'*/
 cerebov MONS_CEREBOV /*'&'*/
@@ -17,10 +19,12 @@ gloorx_vloq MONS_GLOORX_VLOQ /*'&'*/
 lom_lobon MONS_LOM_LOBON /*'&'*/
 mnoleg MONS_MNOLEG /*'&'*/
 pandemonium_demon MONS_PANDEMONIUM_DEMON /*'&'*/
-item/weapon/halberd MONS_DANCING_WEAPON /*'('*/
+#item/weapon/halberd MONS_DANCING_WEAPON /*'('*/
 #weapon_mimic MONS_WEAPON_MIMIC /*')'*/
 nh-mon0/e/shocking_sphere MONS_BALL_LIGHTNING /*'*'*/
+%rim 0
 nh-mon0/e/flaming_sphere MONS_ORB_OF_FIRE /*'*'*/
+%rim 1
 nh-mon0/0demon/balrog MONS_BALRUG /*'1'*/
 blue_death MONS_BLUE_DEATH /*'1'*/
 cacodemon MONS_CACODEMON /*'1'*/
@@ -60,7 +64,9 @@ white_imp MONS_WHITE_IMP /*'5'*/
 %sdir dc-mon0/0golem
 nh-mon0/0golem/clay_golem MONS_CLAY_GOLEM /*'8'*/
 nh-mon0/0golem/glass_golem MONS_CRYSTAL_GOLEM /*'8'*/
+%rim 0
 electric_golem MONS_ELECTRIC_GOLEM /*'8'*/
+%rim 1
 nh-mon0/0golem/iron_golem MONS_IRON_GOLEM /*'8'*/
 nh-mon0/0golem/stone_golem MONS_STONE_GOLEM /*'8'*/
 toenail_golem MONS_TOENAIL_GOLEM /*'8'*/

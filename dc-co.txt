@@ -142,9 +142,9 @@ swamp_drake CORPSE_SWAMP_DRAKE /* d */
 elf CORPSE_ELF /* e */
 
 %sdir dc-mon0/g
-gnoll CORPSE_GNOLL /* g */
-nh-mon0/o/goblin CORPSE_GOBLIN /* g */
-hobgoblin CORPSE_HOBGOBLIN /* g */
+gnoll0 CORPSE_GNOLL /* g */
+goblin0 CORPSE_GOBLIN /* g */
+hobgoblin0 CORPSE_HOBGOBLIN /* g */
 
 %sdir dc-mon0/h
 hog CORPSE_HOG /* h */
@@ -186,7 +186,7 @@ necrophage CORPSE_NECROPHAGE /* n */
 
 %sdir dc-mon0/o
 %back dc-misc/blood_red
-orc CORPSE_ORC /* o */
+orc0 CORPSE_ORC /* o */
 ###orc_high_priest CORPSE_ORC_HIGH_PRIEST /* o */
 ###orc_priest CORPSE_ORC_PRIEST /* o */
 ###orc_sorcerer CORPSE_ORC_SORCERER /* o */
