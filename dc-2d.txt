@@ -1,5 +1,8 @@
 %width 30
 %back none
+%htmlfile tile.htm
+%htmlbody
+%name tile
 
 ## Dungeon features
 %include dc-dngn.txt
@@ -26,36 +29,3 @@
 #### Effects, etc.
 %include dc-misc.txt
 
-%back nh-dngn/dark_part_of_a_room
-dc-misc/unseen_monster MCACHE_START
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster IGNORE_COMMENT
-dc-misc/unseen_monster MCACHE_END

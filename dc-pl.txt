@@ -2,6 +2,8 @@
 %back none
 %name player
 
+%rim 1
+
 ###BASE
 %parts_ctg BASE
 %parts_wx 32
@@ -37,6 +39,25 @@ ogre_mage_f OGRE_MAGE
 ogre_mage_m
 draconian_f DRACONIAN
 draconian_m
+draconian_black_f DRACONIAN_BLACK
+draconian_black_m
+draconian_gold_f DRACONIAN_GOLD
+draconian_gold_m
+draconian_gray_f DRACONIAN_GRAY
+draconian_gray_m
+draconian_green_f DRACONIAN_GREEN
+draconian_green_m
+draconian_mottled_f DRACONIAN_MOTTLED
+draconian_mottled_m
+draconian_pale_f DRACONIAN_PALE
+draconian_pale_m
+draconian_purple_f DRACONIAN_PURPLE
+draconian_purple_m
+draconian_red_f DRACONIAN_RED
+draconian_red_m
+draconian_white_f DRACONIAN_WHITE
+draconian_white_m
+
 centaur_f CENTAUR
 centaur_m
 demigod_f DEMIGOD
@@ -53,6 +74,7 @@ kenku_f KENKU
 kenku_m
 merfolk_f MERFOLK
 merfolk_m
+%end
 
 ###SHADOW
 %parts_ctg SHADOW
@@ -60,7 +82,10 @@ merfolk_m
 %parts_wy 32
 %parts_ox 0
 %parts_oy 0
+%rim 0
 shadow
+%rim 1
+%end
 
 ###Cloak
 %parts_ctg CLOAK
@@ -79,14 +104,16 @@ brown LBROWN
 green GREEN
 cyan CYAN
 white WHITE
+%end
 
 ###Boots
 %parts_ctg BOOTS
-%parts_wx 32
+%parts_wx 16
 %parts_wy 16
-%parts_ox 0
+%parts_ox 8
 %parts_oy 16
 %sdir player/boot
+
 short_red SHORT_RED
 short_purple SHORT_PURPLE
 short_brown SHORT_BROWN
@@ -94,57 +121,70 @@ short_brown2 SHORT_BROWN2
 pj PJ
 middle_brown MIDDLE_BROWN
 middle_gray MIDDLE_GRAY
-middle_green MIDDLE_GREEN
 middle_ybrown MIDDLE_YBROWN
-middle_purple MIDDLE_PURPLE
 middle_brown2 MIDDLE_BROWN2
+middle_gold MIDDLE_GOLD
+middle_green MIDDLE_GREEN
+middle_purple MIDDLE_PURPLE
+long_red LONG_RED
+long_white
+blue_gold
 mesh_red MESH_RED
 mesh_black MESH_BLACK
 mesh_white MESH_WHITE
 mesh_blue MESH_BLUE
-middle_gold MIDDLE_GOLD
-long_red LONG_RED
+%end
 
-
-###Cloth lower
-%parts_ctg CLOTH_L
-%parts_wx 32
+### Body armour
+%parts_ctg LEG
+%parts_wx 16
 %parts_wy 16
-%parts_ox 0
+%parts_ox 8
 %parts_oy 16
 %sdir player/leg
+
 bikini_red BIKINI_RED
 loincloth_red LOINCLOTH_RED
 belt_redbrown BELT_REDBROWN
 belt_gray BELT_GRAY
-pants_black PANTS_BLACK
 pants_orange PANTS_ORANGE
+pants_short_gray PANTS_SHORT_GRAY
+garter
+pj PJ
+
+pants_black PANTS_BLACK
 pants_blue PANTS_BLUE
 pants_darkgreen PANTS_DARKGREEN
 pants_brown PANTS_BROWN
 pants_short_darkbrown PANTS_SHORT_DARKBROWN
 pants_short_brown PANTS_SHORT_BROWN
 pants_short_brown3 PANTS_SHORT_BROWN3
-pants_short_gray PANTS_SHORT_GRAY
-pj PJ
+trouser_green
+pants_l_white
+long_red
+chunli
+pants_red
+
+leg_armor00 METAL_RED
+leg_armor01 METAL_SILVER
+leg_armor03 METAL_GRAY
+leg_armor05 METAL_GREEN
+leg_armor04 LEGCHAIN_GRAY
+leg_armor02 LEGCHAIN_SILVER
 
 skirt_blue SKIRT_OFS
 skirt_green SKIRT_GREEN
 skirt_white SKIRT_WHITE
+skirt_red
+skirt_white2
+
 metal_gray LOWARM1
 metal_green LOWARM2
 pants16 LOWARM3
+%end
 
-leg_armor00 LEG_ARM_OFS
-leg_armor01
-leg_armor02
-leg_armor03
-leg_armor04
-leg_armor05
-
-
-###Cloth upper
-%parts_ctg CLOTH_U
+### Leg armour
+%parts_ctg BODY
 %parts_wx 16
 %parts_wy 32
 %parts_ox 8
@@ -155,7 +195,7 @@ robe_blue ROBE_BLUE
 robe_black ROBE_BLACK
 robe_white ROBE_WHITE
 robe_red ROBE_RED
-robe_magenta ROBE_MAGENTA
+robe_purple ROBE_MAGENTA
 robe_green ROBE_GREEN
 robe_yellow ROBE_YELLOW
 robe_brown ROBE_BROWN
@@ -173,7 +213,6 @@ robe_red2 ROBE_RED2
 robe_white_red ROBE_WHITE_RED
 robe_white_green ROBE_WHITE_GREEN
 robe_blue_white ROBE_BLUE_WHITE
-robe_purple ROBE_PURPLE
 robe_red_gold ROBE_RED_GOLD
 robe_black_red ROBE_BLACK_RED
 robe_blue_green ROBE_BLUE_GREEN
@@ -209,17 +248,19 @@ leather_red LEATHER_RED
 chunli CHUNLI
 shirt_white_yellow SHIRT_WHITE_YELLOW
 shirt_check SHIRT_CHECK
-
+jessica JESSICA
 
 slit_black SLIT_BLACK
-leather_armour LEATHER_ARMOUR
+leather_armour
 leather_green LEATHER_GREEN
 shirt_black SHIRT_BLACK
 shirt_black_and_cloth SHIRT_BLACK_AND_CLOTH
 shirt_black3 SHIRT_BLACK3
 leather2 LEATHER2
-chainmail3 CHAINMAIL3
+coat_red COAT_RED
+coat_black COAT_BLACK
 
+leather_armour2 LEATHER_ARMOUR
 shirt_vest SHIRT_VEST
 karate KARATE
 karate2 KARATE2
@@ -232,21 +273,27 @@ jacket2 JACKET2
 jacket3 JACKET3
 leather_stud LEATHER_STUD
 jacket_stud JACKET_STUD
-chainmail CHAINMAIL
-chainmail2 CHAINMAIL2
+chainmail CHAINMAIL2
 half_plate HALF_PLATE
 half_plate2 HALF_PLATE2
 half_plate3 HALF_PLATE3
 breast_black BREAST_BLACK
 vest_red VEST_RED
+vest_red2 VEST_RED2
 bplate_green BPLATE_GREEN
 bplate_metal1 BPLATE_METAL1
-banded BANDED
+banded BANDED2
+banded2 SPLINT
+armor_blue_gold
+ringmail RINGMAIL
+chainmail3 CHAINMAIL
 plate_and_cloth PLATE_AND_CLOTH
 plate_and_cloth2 PLATE_AND_CLOTH2
-scalemail SCALEMAIL
-leather_metal LEATHER_METAL
-plate PLATE
+scalemail SCALEMAIL2
+scalemail2 SCALEMAIL
+leather_metal BANDED
+plate PLATE2
+plate2 PLATE
 plate_black PLATE_BLACK
 crystal_plate CRYSTAL_PLATE
 armor_mummy ARMOR_MUMMY
@@ -266,20 +313,25 @@ dragonarm_cyan DRAGONARM_CYAN
 dragonarm_brown DRAGONARM_BROWN
 dragonarm_blue DRAGONARM_BLUE
 dragonarm_gold DRAGONARM_GOLD
+
 aragorn ARAGORN
+aragorn2 ARAGORN2
 boromir BOROMIR
 frodo FRODO
 gimli GIMLI
 legolas LEGOLAS
 merry MERRY
 pipin PIPIN
+gil-galad
+isildur
 pj PJ
 sam SAM
+vanhel1
 
 edison EDISON
 lears_chain_mail LEARS_CHAIN_MAIL
 robe_of_night ROBE_OF_NIGHT
-
+%end
 
 
 ### Arms
@@ -301,6 +353,7 @@ glove_grayfist GLOBE_GRAYFIST
 glove_purple GLOBE_PURPLE
 glove_wrist_purple GLOBE_WRIST_PURPLE
 glove_chunli GLOBE_CHUNLI
+gauntlet_blue
 glove_gold GLOBE_GOLD
 glove_short_yellow GLOBE_SHORT_YELLOW
 glove_short_red GLOBE_SHORT_RED
@@ -308,9 +361,10 @@ glove_short_white GLOBE_SHORT_WHITE
 glove_short_green GLOBE_SHORT_GREEN
 glove_short_blue GLOBE_SHORT_BLUE
 glove_short_gray GLOBE_SHORT_GRAY
+%end
 
-#Left hand
-%parts_ctg HAND_L
+# Hand 1
+%parts_ctg HAND1
 %parts_wx 16
 %parts_wy 32
 %parts_ox 0
@@ -330,8 +384,10 @@ great_sword GREAT_SWORD
 great_sword_slant GREAT_SWORD_SLANT
 katana KATANA
 katana_slant KATANA_SLANT
-scimitar2 SCIMITAR
-scimitar FALCHION
+scimitar SCIMITAR
+falchion FALCHION
+double_sword DOUBLE_SWORD
+triple_sword TRIPLE_SWORD
 sword2 SWORD2
 sword_tri SWORD_TRI
 broadsword BROADSWORD
@@ -378,7 +434,8 @@ morningstar2 MORNINGSTAR
 eveningstar EVENINGSTAR
 large_mace LARGE_MACE
 black_whip BLACK_WHIP
-hammer HAMMER
+hammer3 HAMMER
+hammer HAMMER1
 hammer2 HAMMER2
 frail_stick FRAIL_STICK
 frail_ball FRAIL
@@ -466,8 +523,10 @@ crossbow CROSSBOW
 crossbow2 CROSSBOW2
 crossbow3 CROSSBOW3
 crossbow4 CROSSBOW4
+blowgun BLOWGUN
 punk PUNK
 sniper SNIPER
+crossbow_fire FIERY_DEVIL
 krishna KRISHNA
 
 ##missiles
@@ -510,10 +569,11 @@ gimli GIMLI
 legolas LEGOLAS
 saruman SARUMAN
 
+bladehands BLADEHAND
+%end
 
-
-###Right hand
-%parts_ctg HAND_R
+### Hand 2
+%parts_ctg HAND2
 %parts_wx 16
 %parts_wy 32
 %parts_ox 16
@@ -555,6 +615,7 @@ shield_middle_ethn SHIELD_MIDDLE_ETHN
 shield_long_cross SHIELD_LONG_CROSS
 shield_shaman SHIELD_SHAMAN
 shield_of_resistance SHIELD_OF_RESISTANCE
+gil-galad
 
 book_black BOOK_BLACK
 book_blue BOOK_BLUE
@@ -581,11 +642,13 @@ light_yellow LIGHT_YELLOW
 spark SPARK
 fire_dark FIRE_DARK
 fire_white2 FIRE_WHITE2
-
 lantern LANTERN
 torch TORCH
 pj PJ
 torsh2 TORCH2
+
+bladehands BLADEHAND
+%end
 
 ###Hair
 %parts_ctg HAIR
@@ -618,6 +681,10 @@ legolas LEGOLAS
 merry MERRY
 pj PJ
 sam SAM
+pigtail_red PIGTAIL_RED
+brown1 BROWN1
+brown2 BROWN2
+%end
 
 ###Beard
 %parts_ctg BEARD
@@ -636,6 +703,7 @@ long_red LONG_RED
 long_yellow LONG_YELLOW
 long_white LONG_WHITE
 pj PJ
+%end
 
 ###Helms
 %parts_ctg HELM
@@ -709,6 +777,7 @@ fhelm_horn2 FHELM_HORN2
 horn_evil FHELM_EVIL
 helm_plume FHELM_PLUME
 mummy FHELM_MUMMY
+isildur
 art_dragonhelm ART_DRAGONHELM
 
 healer FHELM_HEALER
@@ -723,5 +792,6 @@ hood_white2 HOOD_WHITE2
 hood_ybrown HOOD_YBROWN
 hood_green HOOD_GREEN
 ninja_black MASK_NINJA_BLACK
+
 
 

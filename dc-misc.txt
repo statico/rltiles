@@ -43,9 +43,10 @@ dc-dngn/dngn_altar UNSEEN_ALTAR
 dc-dngn/dngn_entrance UNSEEN_ENTRANCE
 
 %back none
-mask_deep_water MASK_DEEP_WATER
-mask_shallow_water MASK_SHALLOW_WATER
-mask_lava MASK_LAVA
+#mask_deep_water MASK_DEEP_WATER
+#mask_shallow_water MASK_SHALLOW_WATER
+#mask_lava MASK_LAVA
+sink_mask SINK_MASK
 nh-misc/cursor CURSOR
 cursor_red CURSOR2
 nh-misc/cursor CURSOR3
@@ -60,3 +61,51 @@ txt3 TEXT_PARTS_E
 txt4 TEXT_DOLLS_E
 something_under SOMETHING_UNDER
 error ERROR
+
+char20 CHAR00
+char28 IGNORE_COMMENT
+char30 IGNORE_COMMENT
+char38 IGNORE_COMMENT
+char40 IGNORE_COMMENT
+char48 IGNORE_COMMENT
+char50 IGNORE_COMMENT
+char58 IGNORE_COMMENT
+char60 IGNORE_COMMENT
+char68 IGNORE_COMMENT
+char70 IGNORE_COMMENT
+char78 IGNORE_COMMENT
+
+slot ITEM_SLOT
+slot_eq ITEM_SLOT_EQUIP
+
+%back nh-dngn/dark_part_of_a_room
+dc-misc/unseen_monster MCACHE_START
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster IGNORE_COMMENT
+dc-misc/unseen_monster MCACHE_END
