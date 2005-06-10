@@ -16,7 +16,12 @@ spwpn_knife_of_accuracy SPWPN_KNIFE_OF_ACCURACY /* It is almost unerringly accur
 spwpn_staff_of_olgreb SPWPN_STAFF_OF_OLGREB /* It was the magical weapon wielded by the mighty wizard Olgreb before he met his fate somewhere within these dungeons. It grants its wielder resistance to the effects of poison and increases their ability to use venomous magic, and carries magical powers which can be evoked.
 spwpn_vampires_tooth SPWPN_VAMPIRES_TOOTH /* It is lethally vampiric.
 quarterstaff SPWPN_STAFF_OF_WUCAD_MU /* Its power varies in proportion to its wielder's intelligence.   Using it can be a bit risky.
+
+##### Unrandom artifacts
+%include dc-urand.txt
+
 #####NORMAL
+%sdir item/weapon
 ##Blunt
 club WPN_CLUB /* D5H4S12 A heavy piece of wood.
 mace2 WPN_MACE /* D8H3S14 A long handle with a heavy lump on one end.
