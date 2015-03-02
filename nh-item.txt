@@ -433,10 +433,10 @@ yellow /*glass
 black /*glass
 green /*glass
 violet /*glass
-item/gem/grey_stone /*luckstone
-item/gem/grey_stone /*loadstone
-item/gem/grey_stone /*touchstone
-item/gem/grey_stone /*flint
+grey_stone /*luckstone
+grey_stone /*loadstone
+grey_stone /*touchstone
+grey_stone /*flint
 rock
 boulder
 %sdir item/misc
