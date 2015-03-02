@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <!--
+      DO NOT open this file locally. If you do it won't work.
+      Access it from a local HTTP server. For example,
+        $ python -m SimpleHTTPServer 8888
+      Then go to http://127.0.0.1:8888/all.html
+  -->
+  <head>
+    <meta charset="utf-8"/>
+    <title>tile viewer</title>
+    <style>
+      body {
+        background: #666;
+      }
+      img {
+        image-rendering: pixelated;
+      }
+      #container {
+        max-height: 80vh;
+        overflow: scroll;
+      }
+      ::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 7px;
+      }
+      ::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: rgba(0,0,0,.5);
+      }
+    </style>
+  </head>
+  <body>
+    <h3 id="title">(move the mouse over the tiles)</h3>
+    <div id="container">
+      <img id="image" src="all.png"/>
+    </div>
+    <script>
+      if (/^file/.test(document.location.href)) {
+        alert("Don't run this page locally. View source for more info.");
+        document.body.innerHTML = 'error';
+      }
+
+      var title = document.getElementById('title');
+      var image = document.getElementById('image');
+      req = new XMLHttpRequest();
+      req.onreadystatechange = function() {
+        if (req.readyState != 4) return;
+        init(JSON.parse(req.responseText));
+      };
+      req.open('GET', 'all.json', true);
+      req.send();
+
+      function init(data) {
+        image.addEventListener('mousemove', function(event) {
+          var x = Math.floor(event.offsetX / data.tileSize);
+          var y = Math.floor(event.offsetY / data.tileSize);
+          var i = x + y * data.width;
+          var key = data.tiles[i];
+          title.innerText = key + ' (i=' + i + ')';
+        });
+      }
+    </script>
+  </body>
+</html>

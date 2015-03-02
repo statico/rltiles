@@ -1,4 +1,5 @@
 {
+  "tileSize": 32,
   "width": 30,
   "name": "all",
   "tiles": [

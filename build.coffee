@@ -16,7 +16,9 @@ argv.help() unless argv.args.length is 3
 TILE_SIZE = 32 # pixels
 BGCOLOR = '#476c6c'
 
-data = {}
+data = {
+  tileSize: TILE_SIZE
+}
 tiles = []
 seen = {}
 pending = 0
