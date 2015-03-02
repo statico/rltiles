@@ -4,7 +4,7 @@
       DO NOT open this file locally. If you do it won't work.
       Access it from a local HTTP server. For example,
         $ python -m SimpleHTTPServer 8888
-      Then go to http://127.0.0.1:8888/all.html
+      Then go to http://127.0.0.1:8888/index.html
   -->
   <head>
     <meta charset="utf-8"/>
@@ -12,6 +12,7 @@
     <style>
       body {
         background: #666;
+        font-family: sans-serif;
       }
       img {
         image-rendering: pixelated;
@@ -33,8 +34,9 @@
   <body>
     <h3 id="title">(move the mouse over the tiles)</h3>
     <div id="container">
-      <img id="image" src="all.png"/>
+      <img id="image" src="rltiles-2d.png"/>
     </div>
+    <h4>More info: <a href="https://github.com/statico/rltiles">https://github.com/statico/rltiles</a></h4>
     <script>
       if (/^file/.test(document.location.href)) {
         alert("Don't run this page locally. View source for more info.");
@@ -48,7 +50,7 @@
         if (req.readyState != 4) return;
         init(JSON.parse(req.responseText));
       };
-      req.open('GET', 'all.json', true);
+      req.open('GET', 'rltiles-2d.json', true);
       req.send();
 
       function init(data) {
