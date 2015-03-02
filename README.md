@@ -8,7 +8,7 @@ I wanted tiles for a roguelike game. The RL tiles are great, but I wanted a few 
 - Deduplication
 - Decent ordering in the map (all monsters, all items, all dungeon features)
 
-[View the interactive tileset explorer here](statico.github.io/rltiles/) and then check out `rltiles-2d.json` and `rltiles-2d.png`.
+[View the interactive tileset explorer here](http://statico.github.io/rltiles/) and then check out `rltiles-2d.json` and `rltiles-2d.png`.
 
 ![](https://raw.githubusercontent.com/statico/rltiles/master/rltiles-2d.png)
 
