@@ -48,12 +48,13 @@ parse = (filename, breadcrumbs) ->
           console.error indent, "  Line #{ lineno } - ignoring: #{ line }"
     else
       args = line.split /\s+/
-      key = args[0].replace /\s*\/\*.*/g, ''
+      filename = args[0].replace /\s*\/\*.*/g, ''
+      key = pathlib.basename filename
       continue if key of seen
       seen[key] = true
       path = do ->
       for dir in srcdirs
-        path = pathlib.join(dir, key + '.bmp')
+        path = pathlib.join(dir, filename + '.bmp')
         try
           fs.statSync path
         catch e
