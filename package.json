@@ -5,7 +5,6 @@
   "dependencies": {
     "coffee-script": "^1.9.1",
     "commander": "^2.6.0",
-    "gm": "^1.17.0",
-    "linebyline": "0.0.7"
+    "gm": "^1.17.0"
   }
 }

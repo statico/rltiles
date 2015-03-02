@@ -3,7 +3,6 @@
 fs = require 'fs'
 gm = require 'gm'
 pathlib = require 'path'
-readline = require 'linebyline'
 commander = require 'commander'
 
 argv = commander
@@ -21,19 +20,18 @@ data = {
 }
 tiles = []
 seen = {}
-pending = 0
 srcdirs = ['.']
 
 parse = (filename, breadcrumbs) ->
-  pending++
-  rl = readline filename
-  rl.on 'error', (err) -> throw new Error(err)
-  rl.on 'end', ->
-    pending--
-    finish() unless pending
-  rl.on 'line', (line, lineno) ->
-    return if /^\s*#/.test line
-    return unless /\S/.test line
+  indent = new Array(breadcrumbs.length).join('  ')
+  console.error indent, '>>', filename
+  contents = fs.readFileSync filename, 'utf8'
+  lineno = 0
+  for line in contents.split /\n/m
+    lineno++
+    line = line.replace /\s+$/m, ''
+    continue if /^\s*#/.test line
+    continue unless /\S/.test line
     match = line.match /^%(\w+)\s+(.*)/
     if match
       [_, cmd, arg] = match
@@ -47,12 +45,13 @@ parse = (filename, breadcrumbs) ->
         when 'sdir'
           srcdirs.push arg if srcdirs.indexOf arg is -1
         else
-          console.error "#{ filename }:#{ lineno } - Ignoring #{ line }"
+          console.error indent, "  Line #{ lineno } - ignoring: #{ line }"
     else
       args = line.split /\s+/
       key = args[0].replace /\s*\/\*.*/g, ''
-      return if key of seen
+      continue if key of seen
       seen[key] = true
+      path = do ->
       for dir in srcdirs
         path = pathlib.join(dir, key + '.bmp')
         try
@@ -65,21 +64,23 @@ parse = (filename, breadcrumbs) ->
 
       tiles.push [key, path]
 
+  console.error indent, '<<', filename
+  return
+
 parse inputConfig, [inputConfig]
 
-finish = ->
-  i = 0
-  data.tiles = new Array(tiles)
-  for [key, path], i in tiles
-    data.tiles[i] = key
-  fs.writeFileSync outputJSON, JSON.stringify(data, null, '  '), 'utf8'
+i = 0
+data.tiles = new Array(tiles)
+for [key, path], i in tiles
+  data.tiles[i] = key
+fs.writeFileSync outputJSON, JSON.stringify(data, null, '  '), 'utf8'
 
-  w = TILE_SIZE * data.width
-  h = TILE_SIZE * Math.ceil(tiles.length / data.width)
-  image = gm(w, h, 'transparent')
-  for [key, path], i in tiles
-    x = TILE_SIZE * (i - Math.floor(i / data.width) * data.width)
-    y = TILE_SIZE * Math.floor(i / data.width)
-    image = image.in('-page', "+#{x}+#{y}").in(path)
-  image = image.mosaic().transparent(BGCOLOR).write outputImage, (err) ->
-    throw new Error("Couldn't write to #{ outputImage }: #{ err }") if err
+w = TILE_SIZE * data.width
+h = TILE_SIZE * Math.ceil(tiles.length / data.width)
+image = gm(w, h, 'transparent')
+for [key, path], i in tiles
+  x = TILE_SIZE * (i - Math.floor(i / data.width) * data.width)
+  y = TILE_SIZE * Math.floor(i / data.width)
+  image = image.in('-page', "+#{x}+#{y}").in(path)
+image = image.mosaic().transparent(BGCOLOR).write outputImage, (err) ->
+  throw new Error("Couldn't write to #{ outputImage }: #{ err }") if err
