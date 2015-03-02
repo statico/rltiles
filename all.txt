@@ -1,0 +1,8 @@
+%width 30
+%name all
+%include nh-mon.txt
+%include dc-mon.txt
+%include nh-item.txt
+%include dc-item.txt
+%include nh-dngn.txt
+%include dc-dngn.txt

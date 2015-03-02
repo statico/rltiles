@@ -20,16 +20,18 @@ data = {}
 tiles = []
 seen = {}
 pending = 0
+srcdirs = ['.']
 
 parse = (filename, breadcrumbs) ->
   pending++
   rl = readline filename
-  cwd = '.'
   rl.on 'error', (err) -> throw new Error(err)
   rl.on 'end', ->
     pending--
     finish() unless pending
-  rl.on 'line', (line) ->
+  rl.on 'line', (line, lineno) ->
+    return if /^\s*#/.test line
+    return unless /\S/.test line
     match = line.match /^%(\w+)\s+(.*)/
     if match
       [_, cmd, arg] = match
@@ -41,18 +43,24 @@ parse = (filename, breadcrumbs) ->
         when 'include'
           parse arg, breadcrumbs.concat [arg]
         when 'sdir'
-          cwd = arg
+          srcdirs.push arg if srcdirs.indexOf arg is -1
         else
-          console.error "Command %#{ cmd } not supported"
+          console.error "#{ filename }:#{ lineno } - Ignoring #{ line }"
     else
-      key = line.replace /\s*\/\*.*/g, ''
+      args = line.split /\s+/
+      key = args[0].replace /\s*\/\*.*/g, ''
       return if key of seen
       seen[key] = true
-      path = pathlib.join(cwd, key + '.bmp')
-      try
-        fs.statSync path
-      catch e
-        throw new Error("File #{ path } not found, referenced from #{ breadcrumbs.join ' -> ' }")
+      for dir in srcdirs
+        path = pathlib.join(dir, key + '.bmp')
+        try
+          fs.statSync path
+        catch e
+          path = null
+        break if path
+      if not path
+        throw new Error("Couldn't find #{ key } in #{ srcdirs } via #{ breadcrumbs }")
+
       tiles.push [key, path]
 
 parse inputConfig, [inputConfig]
