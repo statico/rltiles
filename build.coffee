@@ -68,5 +68,5 @@ finish = ->
     x = TILE_SIZE * (i - Math.floor(i / data.width) * data.width)
     y = TILE_SIZE * Math.floor(i / data.width)
     image = image.in('-page', "+#{x}+#{y}").in(path)
-  image = image.mosaic().write outputImage, (err) ->
+  image = image.mosaic().transparent(BGCOLOR).write outputImage, (err) ->
     throw new Error("Couldn't write to #{ outputImage }: #{ err }") if err
