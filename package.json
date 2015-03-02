@@ -1,0 +1,10 @@
+{
+  "name": "rltiles",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "coffee-script": "^1.9.1",
+    "commander": "^2.6.0",
+    "linebyline": "0.0.7"
+  }
+}
