@@ -18,6 +18,7 @@ BGCOLOR = '#476c6c'
 
 data = {}
 tiles = []
+seen = {}
 pending = 0
 
 parse = (filename, breadcrumbs) ->
@@ -44,21 +45,23 @@ parse = (filename, breadcrumbs) ->
         else
           console.error "Command %#{ cmd } not supported"
     else
-      line = line.replace /\s*\/\*.*/g, ''
-      path = pathlib.join(cwd, line + '.bmp')
+      key = line.replace /\s*\/\*.*/g, ''
+      return if key of seen
+      seen[key] = true
+      path = pathlib.join(cwd, key + '.bmp')
       try
         fs.statSync path
       catch e
         throw new Error("File #{ path } not found, referenced from #{ breadcrumbs.join ' -> ' }")
-      tiles.push [line, path]
+      tiles.push [key, path]
 
 parse inputConfig, [inputConfig]
 
 finish = ->
   i = 0
-  data.tiles = {}
-  for [key, path] in tiles
-    data.tiles[key] = i++
+  data.tiles = new Array(tiles)
+  for [key, path], i in tiles
+    data.tiles[i] = key
   fs.writeFileSync outputJSON, JSON.stringify(data, null, '  '), 'utf8'
 
   w = TILE_SIZE * data.width
