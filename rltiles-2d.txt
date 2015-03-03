@@ -1,0 +1,8 @@
+%width 30
+%name rltiles-2d
+%include dc-mon.txt
+%include nh-mon.txt
+%include dc-item.txt
+%include nh-item.txt
+%include dc-dngn.txt
+%include nh-dngn.txt

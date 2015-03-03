@@ -12,6 +12,20 @@ I wanted tiles for a roguelike game. The RL tiles are great, but I wanted a few 
 
 ![](https://raw.githubusercontent.com/statico/rltiles/master/rltiles-2d.png)
 
+### Developiing
+
+The .txt files seemed simple enough, and I couldn't figure out tools in tools/, so I wrote a small tool to do what I want.
+
+### Requirements
+
+1. GraphicsMagick (`brew install graphicsmagick` or `apt-get install graphicsmagick`)
+1. Node 0.10 or later
+
+### Building the tiles
+
+1. `npm install`
+1. `./build.coffee rltiles-2d.txt rltiles-2d.png rltiles-2d.json`
+
 ## License
 
     Part of (or All) the graphic tiles used in this program is the public 
